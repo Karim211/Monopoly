@@ -4,4 +4,25 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/jeu.unity
+    guid: 6fed7b2aabdcc2345b357d07aee61b2e
+  - enabled: 1
+    path: Assets/choixjoueur2.unity
+    guid: f3b0ee789be0b224c9b6ce350df6888b
+  - enabled: 1
+    path: Assets/choixjoueur3.unity
+    guid: ef53f9f21e92acb4db83c6aa64ad8525
+  - enabled: 1
+    path: Assets/choixjoueur4.unity
+    guid: 5110dd5c437f0bd4eb7d79a79de2946d
+  - enabled: 1
+    path: Assets/plateau2.unity
+    guid: bb5f7705a3e3c604bbda7c083438e9d9
+  - enabled: 1
+    path: Assets/plateau3.unity
+    guid: 2cb95fc0b91870945a8d6f063a019f69
+  - enabled: 1
+    path: Assets/Plateau.unity
+    guid: 64f1cd282982f604e9a9597ca0eed801

@@ -13,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - Board
-  - De
+  - scren
+  - 
   - 
   - 
   - 
@@ -38,12 +38,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: flor
-    uniqueID: 965429403
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: De
-    uniqueID: 4247763879
     locked: 0
