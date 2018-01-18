@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class plateau : MonoBehaviour {
 
     public int nbPion = 2;
     public int newposition;
     private int tour=0;//une vareable desider du tour 0-> jouer1 || 1->jouer2 ...
-    public GameObject[] des = new GameObject[2];
     private GameObject realDe1,realDe2,affichage1,affichage2; //les instase des dés et des affichage
     Case[] cases = new Case[40]; //l'ensemble des ceses
-    public GameObject[] pion = new GameObject[4]; //les 4 pions NP: il ne serand pas tous instatier 
-    private GameObject pion1, pion2;
+    public GameObject[] pion = new GameObject[4]; //les 4 pions NP: il ne serand pas tous instancier 
+    public GameObject[] pions = new GameObject[4]; //les pions instancier
+    public UnityEvent tourDeJeux = new UnityEvent(); //creation d'un evenement 
 
     void Start()
     {
@@ -58,29 +59,23 @@ public class plateau : MonoBehaviour {
         cases[38] = new Case(new Vector3(2.1f, -1.21f, 0), 38, CaseType.Depart, nbPion);
         cases[39] = new Case(new Vector3(2.1f, -1.62f, 0), 39, CaseType.Depart, nbPion);
         //instatiation des pion dans la case 0 
-        pion1 = Instantiate(pion[1], cases[0].getNewPionPositionPassage(), Quaternion.identity) as GameObject;
-        cases[0].pions[0] = pion1; //on indique a la case 0 que le pion1 est dedans 
-        pion2 = Instantiate(pion[2], cases[0].getNewPionPositionPassage(), Quaternion.identity) as GameObject;
-        cases[0].pions[1] = pion2; 
-        pion1.transform.SetParent(gameObject.transform, false); //on fix le parand du pion
-        pion2.transform.SetParent(gameObject.transform, false);
+        for(int i = 0; i < nbPion; i++){
+            pions[i] = Instantiate(pion[i], cases[0].getNewPionPositionPassage(), Quaternion.identity) as GameObject;
+            cases[0].pions[i] = pions[i];//on indique a la case 0 que le pion[i] est dedans 
+            pions[i].transform.SetParent(gameObject.transform, false); //on fix le parand du pion
+        }
         //la meme chose pour les des
-        realDe1 = Instantiate(des[0], des[0].gameObject.transform.position, Quaternion.identity) as GameObject;
-        realDe2 = Instantiate(des[1], des[1].gameObject.transform.position, Quaternion.identity) as GameObject;
-        realDe1.transform.SetParent(GameObject.Find("afficheJ1").transform, false);
-        realDe2.transform.SetParent(GameObject.Find("afficheJ1").transform, false);
+        realDe1 = GameObject.Find("des1");
+        realDe2 = GameObject.Find("des2");
 
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log(PlayerPrefs.GetInt("des1") + PlayerPrefs.GetInt("des2"));
-            StartCoroutine(Goto(PlayerPrefs.GetInt("des1")+PlayerPrefs.GetInt("des2"),(tour == 0)? pion1 : pion2));
-            string suivant = jouerSuivant();
-            realDe1.transform.SetParent(GameObject.Find(suivant).transform, false);
-            realDe2.transform.SetParent(GameObject.Find(suivant).transform, false);
+            //invocer l'evenement tour du jouer
+            tourDeJeux.Invoke();
         }
     }
 
@@ -89,9 +84,16 @@ public class plateau : MonoBehaviour {
         return (int)a / 10;
     }
 
-    public IEnumerator Goto(int c, GameObject objectPion)
+    public void startAnimation()
     {
+        StartCoroutine(Goto(pions[tour]));
+    }
+
+    public IEnumerator Goto(GameObject objectPion)
+    {
+        yield return new WaitForSeconds(3);
         PionScript pion = objectPion.GetComponent<PionScript>();
+        int c = PlayerPrefs.GetInt("des1") + PlayerPrefs.GetInt("des2");
         c = (c + pion.position) % 40; 
         cases[pion.position].isGone(objectPion);
         int trancheC = tranche(c);
@@ -124,6 +126,9 @@ public class plateau : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         yield return new WaitForEndOfFrame();
+        string suivant = jouerSuivant();
+        realDe1.transform.SetParent(GameObject.Find(suivant).transform, false);
+        realDe2.transform.SetParent(GameObject.Find(suivant).transform, false);
 
     }
     // retourn le nom de l'affichage du jouer suivant
