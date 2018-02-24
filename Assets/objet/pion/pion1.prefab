@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4512894283758108}
   - component: {fileID: 212117248792962694}
-  - component: {fileID: 114078119266830968}
+  - component: {fileID: 114512610610058956}
   m_Layer: 0
   m_Name: pion1
   m_TagString: Untagged
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114078119266830968
+--- !u!114 &114512610610058956
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf574a127e6abbb469e8a61ec2b6e45c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: 0
+  anim: {fileID: 0}
   speed: 2
 --- !u!212 &212117248792962694
 SpriteRenderer:
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: ad1ad9c62498d7443a6ee230102f6c36, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f61adad6419d53e4c98c536c8603dbb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

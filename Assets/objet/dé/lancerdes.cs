@@ -14,7 +14,8 @@ public class lancerdes : MonoBehaviour {
         anim.SetTrigger("active");
         int selectnumber = Random.Range(1, 6);
         anim.SetTrigger("des" + selectnumber);
-        PlayerPrefs.SetInt("des" + nb, selectnumber);
+        //PlayerPrefs.SetInt("des" + nb, selectnumber);
+        PlayerPrefs.SetInt("des" + nb, 5);
     }
 
 }

@@ -224,6 +224,7 @@
     <Compile Include="Assets\objet\pion\somme.cs" />
     <Compile Include="Assets\script\boucledollars.cs" />
     <Compile Include="Assets\script\Case.cs" />
+    <Compile Include="Assets\script\DontDestroy.cs" />
     <Compile Include="Assets\script\j2.cs" />
     <Compile Include="Assets\script\j3.cs" />
     <Compile Include="Assets\script\j4.cs" />
@@ -231,6 +232,7 @@
     <Compile Include="Assets\script\lancer3.cs" />
     <Compile Include="Assets\script\lancer4.cs" />
     <Compile Include="Assets\script\lancerdes2.cs" />
+    <Compile Include="Assets\script\musique.cs" />
     <Compile Include="Assets\script\pionavance.cs" />
     <Compile Include="Assets\script\plateau.cs" />
     <Compile Include="Assets\script\SceneManager.cs" />
